@@ -1,0 +1,30 @@
+{
+  "name": "mqtt-iot-hub",
+  "version": "1.0.0",
+  "description": "TypeScript project to send data over MQTT to Azure IoT Hub",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "watch": "tsc --watch"
+  },
+  "keywords": [
+    "mqtt",
+    "azure",
+    "iot-hub",
+    "typescript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "azure-iot-device": "^1.18.2",
+    "azure-iot-device-mqtt": "^1.15.2",
+    "dotenv": "^16.4.1"
+  }
+}
