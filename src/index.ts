@@ -93,7 +93,7 @@ async function main(): Promise<void> {
       } catch (error) {
         console.error('Error sending telemetry:', error);
       }
-    }, 5000);
+    }, 30000);
 
     // Handle graceful shutdown
     process.on('SIGINT', () => {
