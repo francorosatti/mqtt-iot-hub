@@ -15,14 +15,19 @@ if (!connectionString) {
   process.exit(1);
 }
 
+// Extract deviceId from connection string
+const deviceIdMatch = connectionString.match(/DeviceId=([^;]+)/);
+const deviceId = deviceIdMatch ? deviceIdMatch[1] : 'unknown';
+
 // Create MQTT client
 const client = Client.fromConnectionString(connectionString, MqttProtocol);
 
 // Interface for telemetry data
 interface TelemetryData {
+  deviceId: string;
   temperature: number;
   humidity: number;
-  timestamp: string;
+  ts: string;
 }
 
 /**
@@ -53,9 +58,10 @@ async function sendTelemetry(data: TelemetryData): Promise<void> {
  */
 function generateSensorData(): TelemetryData {
   return {
+    deviceId: deviceId,
     temperature: 20 + Math.random() * 15, // Random temperature between 20-35°C
     humidity: 40 + Math.random() * 40,    // Random humidity between 40-80%
-    timestamp: new Date().toISOString()
+    ts: new Date().toISOString()          // ISO 8601 format: "2026-01-29T16:12:00.000Z"
   };
 }
 
